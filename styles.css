@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: black;
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  height: 100vh; /* Hauteur de la fenêtre */
+  background-color: rgba(35, 35, 35, 1); /* Couleur de fond */
+}
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.hero-image video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 60%), linear-gradient(to top, transparent 5%, black 60%);
+  mask-image: linear-gradient(to bottom, transparent 5%, black 60%), linear-gradient(to top, transparent 5%, black 60%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+main {
+  padding: 1rem;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 20rem;
+  color: aliceblue;
+  word-break: break-all;
+  position: fixed;
+  top: 1%;
+  left: 2%;
+  margin: 1% 0;
+  line-height: 1em;
+  z-index: 0;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  bottom: 50px; /* Positionner le bouton en bas */
+  transform: translateX(-50%) scale(1);
+  border-style: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background: rgba(35, 35, 35, 1);
+  background: linear-gradient(45deg, rgba(35, 35, 35, 1) 0%, rgba(45, 45, 45, 1) 100%);
+  box-shadow: -2px -7px 10px rgba(25, 25, 25, 1), 4px 6px 10px rgba(45, 45, 45, 1);
+  transition: all 0.3s;
+}
+
+button:active {
+  background: rgba(45, 45, 45, 1);
+  background: linear-gradient(45deg, rgba(45, 45, 45, 1) 0%, rgba(55, 55, 55, 1) 100%);
+  box-shadow: 
+    -2px -7px 10px rgba(45, 45, 45, 1), 
+    4px 6px 10px rgba(25, 25, 25, 1),
+    inset -2px -7px 10px rgba(25, 25, 25, 1), 
+    inset 4px 6px 10px rgba(45, 45, 45, 1);
+  transition: all 0.3s;
+  transform: translateX(-50%) scale(0.95);
+}
+
+button i {
+  font-size: 40px;
+  background: linear-gradient(-45deg, gray 0%, lightgray 100%);
+  background-clip: text; /* Ajoutez la propriété standard */
+  -webkit-background-clip: text; /* Propriété spécifique à WebKit */
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+button:active i {
+  transform: scale(0.9);
+  transition: all 0.3s;
+}
+
+.tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: none;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.tooltip-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  height: 100%;
+  width: 100%; /* Assurez que le contenu occupe toute la largeur */
+}
+
+.tooltip-video-container {
+  max-width: 100%;
+  height: auto; 
+  object-fit: cover;
+  position: absolute;
+}
+
+.tooltip-text {
+  flex: 1;
+  padding: 20px;
+  color: #424242;
+  text-align: left;
+  position: absolute;
+}
+
+.tooltip-text h2 {
+  margin: 0 0 5px 0; /* Espacement de 5px en dessous du titre */
+}
+
+.tooltip-text p {
+  margin: 0 0 5px 0; /* Espacement de 5px en dessous du texte */
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .hero-image video {
+    width: 814px;
+    height: auto; /* Ajuster la hauteur automatiquement */
+    top: 50%;
+    left: 50%;
+    max-width: 814px; /* Largeur maximale */
+    max-height: 458px; /* Hauteur maximale */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 60%),
+                        linear-gradient(to top, transparent 5%, black 60%);
+    mask-image: linear-gradient(to bottom, transparent 5%, black 60%),
+                linear-gradient(to top, transparent 5%, black 60%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+  }
+  
+  h1 {
+    font-size: 9.5rem;
+    line-height: 1em;
+  }
+
+  p {
+    padding: 0;
+  }
+
+  button {
+    width: 70px; /* Taille réduite pour les petits écrans */
+    height: 70px; /* Taille réduite pour les petits écrans */
+    box-shadow: -2px -5px 7px rgba(25, 25, 25, 1), 4px 5px 7px rgba(45, 45, 45, 1);
+  }
+
+  button:active {
+    box-shadow: 
+      -2px -5px 7px rgba(45, 45, 45, 1), 
+      4px 5px 7px rgba(25, 25, 25, 1),
+      inset -2px -5px 7px rgba(25, 25, 25, 1), 
+      inset 4px 5px 7px rgba(45, 45, 45, 1);
+    transform: translateX(-50%) scale(0.9); /* Taille légèrement réduite lors du clic */
+  }
+
+  button i {
+    font-size: 30px; /* Taille de l'icône réduite */
+  }
+}
